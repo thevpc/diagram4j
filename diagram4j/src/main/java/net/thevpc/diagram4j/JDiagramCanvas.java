@@ -21,6 +21,7 @@ import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.swing.JPanel;
@@ -427,14 +428,18 @@ public class JDiagramCanvas extends JPanel
     }
 
     public void setAction(JDiagramEditorAction action) {
-        if (this.action != null) {
-            this.action.dispose();
+        JDiagramEditorAction old=this.action;
+        if(!Objects.equals(this.action,action)) {
+            if (this.action != null) {
+                this.action.dispose();
+            }
+            this.action = action;
+            if (this.action != null) {
+                action.setCanvas(this);
+            }
+            updateView();
+            diagram.firePropertyChanged(diagram, null,"action",old,action);
         }
-        this.action = action;
-        if (this.action != null) {
-            action.setCanvas(this);
-        }
-        updateView();
     }
 
     public void unsetAction() {
