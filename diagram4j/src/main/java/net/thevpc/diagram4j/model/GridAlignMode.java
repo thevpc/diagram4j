@@ -14,6 +14,6 @@ public enum GridAlignMode {
     RIGHT,
     TOP,
     BOTTOM,
-    CENTER_HORINZONTAL,
-    VCENTER,
+    CENTER_HORIZONTAL,
+    CENTER_VERTICAL,
 }

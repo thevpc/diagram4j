@@ -81,18 +81,18 @@ public class JDiagramSelectNodeAction extends AbstractDiagramEditorAction {
     public void mouseReleased(MouseEvent e) {
         if (dragged != null) {
             if (dragged.moveGraph) {
-                dragged.graphToMove.snapeToGrid(GridMagnetMode.INHERITED, false);
+                dragged.graphToMove.snapToGrid(GridMagnetMode.INHERITED, false);
             } else if (dragged.moveElems) {
                 for (JDiagramElement el : dragged.elementsToMove) {
                     if (el instanceof JDiagramShape) {
-                        getDiagram().snapeToGrid(null, (JDiagramShape) el);
+                        getDiagram().snapToGrid(null, (JDiagramShape) el);
                     }
                 }
             } else if (dragged.movePorts) {
                 for (JDiagramPort gp : dragged.portsToMove) {
                     JDiagramElement el = getDiagram().getElement(gp.getShapeUuid());
                     if (el instanceof JDiagramShape) {
-                        getDiagram().snapeToGrid(null, (JDiagramShape) el);
+                        getDiagram().snapToGrid(null, (JDiagramShape) el);
                     }
                 }
             } else if (dragged.select) {

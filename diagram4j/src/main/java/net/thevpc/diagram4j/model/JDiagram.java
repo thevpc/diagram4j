@@ -300,7 +300,7 @@ public class JDiagram {
         n.build(this);
         fireGeometryAdded(this, n);
         if (n instanceof JDiagramShape) {
-            snapeToGrid(GridMagnetMode.INHERITED, (JDiagramShape) n);
+            snapToGrid(GridMagnetMode.INHERITED, (JDiagramShape) n);
         }
     }
 
@@ -346,7 +346,7 @@ public class JDiagram {
                 }
                 return;
             }
-            case CENTER_HORINZONTAL: {
+            case CENTER_HORIZONTAL: {
                 int y = firstIsRef ? all.get(0).getBounds(this).getCenterY()
                         : all.stream().map(e -> e.getBounds(this).getCenterY()).min((a, b) -> Integer.compare(a, b)).orElse(0);
                 for (JDiagramShape e : all) {
@@ -355,7 +355,7 @@ public class JDiagram {
                 }
                 return;
             }
-            case VCENTER: {
+            case CENTER_VERTICAL: {
                 int x = firstIsRef ? all.get(0).getBounds(this).getCenterX()
                         : all.stream().map(e -> e.getBounds(this).getCenterX()).min((a, b) -> Integer.compare(a, b)).orElse(0);
                 for (JDiagramShape e : all) {
@@ -472,16 +472,16 @@ public class JDiagram {
         return new JDiagramBounds(x1, y1, x2, y2);
     }
 
-    public boolean snapeToGrid(GridMagnetMode mode, boolean selected) {
+    public boolean snapToGrid(GridMagnetMode mode, boolean selected) {
         boolean someChanges = false;
         List<JDiagramShape> selectedShapes = selected ? getSelectedShapes() : getShapes();
         for (JDiagramShape shape : selectedShapes) {
-            someChanges |= snapeToGrid(mode, shape);
+            someChanges |= snapToGrid(mode, shape);
         }
         return someChanges;
     }
 
-    public boolean snapeToGrid(GridMagnetMode mode, JDiagramShape shape) {
+    public boolean snapToGrid(GridMagnetMode mode, JDiagramShape shape) {
         if (mode == null || mode == GridMagnetMode.INHERITED) {
             mode = shape.getGridMagnetMode();
             if (mode == null || mode == GridMagnetMode.INHERITED) {
