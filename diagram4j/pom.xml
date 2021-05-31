@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.thevpc.diagram4j</groupId>
     <artifactId>diagram4j</artifactId>
-    <version>0.1</version><!--published NONE-->
+    <version>0.1.1</version><!--published NONE-->
     <packaging>jar</packaging>
     <name>net.thevpc.diagram4j.diagram4j</name>
     <description>Simple Graph Editor</description>
@@ -64,7 +64,7 @@
 <!--        <dependency>
             <groupId>net.thevpc.common</groupId>
             <artifactId>thevpc-common-swing</artifactId>
-            <version>2.3.9</version>
+            <version>2.4.0</version>
         </dependency>-->
     </dependencies>
     <build>
